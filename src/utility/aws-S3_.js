@@ -1,24 +1,32 @@
-import aws from 'aws-sdk';
+  //----------------- Importing Module and Packages -------------->
+  import aws from 'aws-sdk';
 
+  //------------------- AWS Config ----------------->
 aws.config.update({
     accessKeyId: "AKIAY3L35MCRUJ6WPO6J",
     secretAccessKey: "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",
     region: "ap-south-1"
 })
 
+  //-------------- This function is used for Generate AWS S3 Link of File ------------>
 let uploadFile = async (file) => {
-    return new Promise( (resolve, reject) => {
-        let s3 = new aws.S3({ apiVersion: '2006-03-01' }); 
+
+    return new Promise((resolve, reject) => {
+
+        let s3 = new aws.S3({ apiVersion: '2006-03-01' });
+
         var uploadParams = {
             ACL: "public-read",
             Bucket: "classroom-training-bucket",
             Key: "group1project/" + file.originalname,
             Body: file.buffer
         }
-        s3.upload(uploadParams,  (err, data) => {
+
+        s3.upload(uploadParams, (err, data) => {
             if (err) {
                 return reject({ "error": err })
             }
+            //console.log(data)
             console.log("file uploaded successfully")
             return resolve(data.Location)
         })
@@ -26,4 +34,6 @@ let uploadFile = async (file) => {
     })
 }
 
+
+//--------------- Module Export -----------------//
 export default uploadFile 
