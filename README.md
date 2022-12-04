@@ -5,7 +5,7 @@
 ### Key points
 
 - In this project we will work feature wise. That means we pick one object like user, book, blog, etc at a time. We work through it's feature. The steps would be:
-  1) We create it's model.
+  1) We create it's model..
   2) We build it's APIs.
   3) We test these APIs.
   4) We deploy these APIs.
